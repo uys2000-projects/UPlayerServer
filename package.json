@@ -1,0 +1,25 @@
+{
+  "name": "render-uplayer",
+  "version": "1.0.0",
+  "main": "./build/main.js",
+  "author": "Mehmet Uysal <mehmetuysal2000@yandex.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node ./build/main.js",
+    "serve": "node --watch --trace-warnings  -- ./build/main.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase-admin": "^12.1.0",
+    "typescript": "^5.4.5",
+    "u-logger": "https://github.com/uys2000-projects/ULogger"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21"
+  }
+}
