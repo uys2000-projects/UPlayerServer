@@ -6,7 +6,6 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "build:server": "yarn && tsc",
     "watch": "tsc --watch",
     "start": "node ./build/main.js",
     "serve": "node --watch --trace-warnings  -- ./build/main.js"
