@@ -1,11 +1,6 @@
-import { initializeApp, applicationDefault, cert } from "firebase-admin/app";
-import {
-  getFirestore,
-  Timestamp,
-  FieldValue,
-  Filter,
-} from "firebase-admin/firestore";
+import { initializeApp, cert } from "firebase-admin/app";
+import firebaseAdminsdk from "../../keys/firebase-adminsdk";
 
-initializeApp({
-  credential: cert({}),
+export default initializeApp({
+  credential: cert(firebaseAdminsdk),
 });
