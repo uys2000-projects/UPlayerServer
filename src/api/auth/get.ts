@@ -4,9 +4,8 @@ import { isFirestoreActive } from "../../utils/firestore";
 import { addDoc } from "../../services/firebase/firestore";
 
 import { FirestoreNotActiveError } from "../../models/responses/errors";
-import { GetAuth } from "../../models/responses/auth";
+import { Auth, GetAuth } from "../../models/firestore/auth";
 import { NotSuccess } from "../../models/responses/success";
-import Auth from "../../models/firestore/auth";
 
 export default async function (req: Request, res: Response) {
   // Check firestore service is active
