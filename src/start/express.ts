@@ -7,7 +7,7 @@ import api from "../api";
 const app = express();
 
 const corsOptions = {
-  origin: ["https://mehmetuysal.dev"],
+  origin: ["https://mehmetuysal.dev", "*"],
   optionsSuccessStatus: 200,
 };
 
