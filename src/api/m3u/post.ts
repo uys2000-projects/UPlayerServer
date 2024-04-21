@@ -8,7 +8,7 @@ export default async function (req: Request, res: Response) {
     const url = req.body.url;
     if (url) {
       console.log(`Request URL: ${url}`);
-      const data = await getFileRequest(url);
+      const data = await getFileRequest.pLogger(url);
       return res.status(200).send({ data: data as string });
     }
   } catch (err) {
