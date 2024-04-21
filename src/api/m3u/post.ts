@@ -7,10 +7,13 @@ export default async function (req: Request, res: Response) {
   try {
     const url = req.body.url;
     if (url) {
+      console.log(`Request URL: ${url}`);
       const data = await getFileRequest(url);
       return res.status(200).send({ data: data as string });
     }
-  } catch {}
+  } catch (err) {
+    console.log(err);
+  }
   // If can not GET data, return 500 - NotSuccess
   return res.status(500).send(new NotSuccess());
 }
