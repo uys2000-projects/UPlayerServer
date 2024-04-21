@@ -1,18 +1,25 @@
-import http from "http";
-import request from "request";
-export const getFile = function (url: string) {
+import http from "node:http";
+
+export const readFile = function (url: string) {
+  console.log("=======================================");
+  console.log(url);
   return new Promise((resolve, reject) => {
-    const writeMessage = (message: http.IncomingMessage) => {
-      let data: any[] = [];
-      message.on("data", (chunk) => {
-        console.log(chunk.toString());
-        data.push(chunk);
-      });
-      message.on("end", () => {
-        console.log(`Data read endded data length:${data.length}`);
-        resolve(Buffer.concat(data).toString());
-      });
-    };
-    http.get(url, writeMessage);
+    http.get(url).on("response", (res) => {
+      console.log(`\nResponse Code: ${res.statusCode}`);
+      console.log(`Readable :${res.readable}`);
+      console.log(`Content Length :${res.headers["content-length"]}`);
+      console.log(`Headers :${JSON.stringify(res.headers)}`);
+      let chunks: string[] = [];
+      if (res.readable) {
+        res.on("data", (chunk) => {
+          chunks.push(chunk.toString());
+        });
+        res.on("end", () => {
+          const data = chunks.join("\n");
+          console.log(`Chunks Count :${chunks.length}`);
+          console.log(`Data Length :${data.length}`);
+        });
+      } else return resolve(res.statusCode);
+    });
   });
 };

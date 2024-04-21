@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getFile } from "../../utils/file";
+import { readFile } from "../../utils/file";
 import { NotSuccess } from "../../models/responses/success";
 
 export default async function (req: Request, res: Response) {
@@ -7,8 +7,7 @@ export default async function (req: Request, res: Response) {
   try {
     const url = req.body.url;
     if (url) {
-      console.log(`Request URL: ${url}`);
-      const data = await getFile.pLogger(url);
+      const data = await readFile(url);
       return res.status(200).send({ data: data as string });
     }
   } catch (err) {
