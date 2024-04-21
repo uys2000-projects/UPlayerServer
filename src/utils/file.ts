@@ -8,6 +8,6 @@ export const getFile = function (url: string) {
         res.on("data", (chunk) => data.push(chunk));
         res.on("end", () => resolve(Buffer.concat(data).toString()));
       })
-      .on("error", (err) => reject(err));
+      .on("error", (err) => reject.logger(err));
   });
 };
