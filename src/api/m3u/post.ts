@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { readFile } from "../../utils/file";
+import { readFileCloud } from "../../utils/file";
 import { NotSuccess } from "../../models/responses/success";
 
 export default async function (req: Request, res: Response) {
@@ -7,7 +7,7 @@ export default async function (req: Request, res: Response) {
   try {
     const url = req.body.url;
     if (url) {
-      const data = await readFile(url);
+      const data = await readFileCloud(url);
       return res.status(200).send({ data: data as string });
     }
   } catch (err) {
