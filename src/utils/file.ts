@@ -16,13 +16,13 @@ export const getFile = function (url: string) {
 
 export const getFileRequest = function (url: string) {
   return new Promise((resolve, reject) => {
-    console.log(`Request to url: ${url}`);
     request.get(url, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log(`Result Data Length:${body.length} from url: ${url}`);
         return resolve(body);
       }
       console.log(`Error from url: ${url}`);
+      console.error(`${error}`);
       return reject(error);
     });
   });
