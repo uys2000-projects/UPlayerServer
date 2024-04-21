@@ -18,6 +18,7 @@ export const readFile = function (url: string) {
           const data = chunks.join("\n");
           console.log(`Chunks Count :${chunks.length}`);
           console.log(`Data Length :${data.length}`);
+          resolve(data);
         });
       } else return resolve(res.statusCode);
     });
