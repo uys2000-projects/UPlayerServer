@@ -13,17 +13,3 @@ export const getFile = function (url: string) {
     http.get(url, writeMessage);
   });
 };
-
-export const getFileRequest = function (url: string) {
-  return new Promise((resolve, reject) => {
-    request.get(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log(`Result Data Length:${body.length} from url: ${url}`);
-        return resolve(body);
-      }
-      console.log(`Error from url: ${url}`);
-      console.error(`${error}`);
-      return reject(error);
-    });
-  });
-};
